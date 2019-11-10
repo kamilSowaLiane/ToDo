@@ -32,21 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 deleteIcon.style.display = 'none';
             }
         })
-        var deleteIcon = document.createElement('i');
-        deleteIcon.classList.add('material-icons');
-        deleteIcon.classList.add('md-36');
-        var deleteIconTN = document.createTextNode('cancel');
-        deleteIcon.style.display = 'none';
-        deleteIcon.appendChild(deleteIconTN);
-        deleteIcon.addEventListener('click', function() {
-            this.parentElement.parentElement.remove();
-            if (current.children.length === 0) {
-                current.style.display = 'none';
-            } 
-        })
-
+        
         eventsBox.appendChild(circleIcon);
-        eventsBox.appendChild(deleteIcon);
         li.appendChild(eventsBox);
 
         if (taskTime.value.length === 5 || taskDue.value.length > 4) {
