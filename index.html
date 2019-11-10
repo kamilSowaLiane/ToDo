@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="js/app.js"></script>
+        <link href="css/style.css" type="text/css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="panel">
+                <div id="logo">
+                    <i class="material-icons md-48 white">
+                         format_list_bulleted
+                    </i>
+                    <h1>Task Manager</h1>
+                </div>
+                <div id="form-wrapper">
+                    <i class="material-icons cancel md-36">
+                        highlight_off
+                    </i>
+                    <div>
+                        <i class="material-icons md-36 arrow-right">
+                            play_arrow
+                        </i>
+                        <input id="task-name" type="text" placeholder="Task name">
+                    </div>
+                    <div>
+                        <i class="material-icons md-36 arrow-right">
+                            schedule
+                        </i>
+                        <input id="task-time" type="time">
+                    </div>
+                    <div>
+                        <i class="material-icons md-36 arrow-right">
+                            outlined_flag
+                        </i>
+                        <input id="task-due" type="text" placeholder="Due">
+                    </div>
+                </div>
+            </div>
+            <div id="container">
+                <header>
+                    <i class="material-icons today-icon">
+                        calendar_today
+                    </i>
+                    <p id="today-header"></p>
+                    <p id="week-header">This week</p>
+                </header>
+                <div id="this-week"> 
+                    <div class="tile selected">
+                        <p class="date"></p>
+                        <p class="month"></p>
+                        <p class="date-name"></p>
+                    </div>
+                    <div class="tile">
+                        <p class="date"></p>
+                        <p class="month"></p>
+                        <p class="date-name"></p>
+                    </div>
+                    <div class="tile">
+                        <p class="date"></p>
+                        <p class="month"></p>
+                        <p class="date-name"></p>
+                    </div>
+                    <div class="tile">
+                        <p class="date"></p>
+                        <p class="month"></p>
+                        <p class="date-name"></p>
+                    </div>
+                    <div class="tile">
+                        <p class="date"></p>
+                        <p class="month"></p>
+                        <p class="date-name"></p>
+                    </div>
+                    <div class="tile">
+                        <p class="date"></p>
+                        <p class="month"></p>
+                        <p class="date-name"></p>
+                    </div>
+                    <div class="tile">
+                        <p class="date"></p>
+                        <p class="month"></p>
+                        <p class="date-name"></p>
+                    </div>
+                </div>
+                <div id="main-content">
+                    <ul class="task-list-0"></ul>
+                    <ul class="task-list-1"></ul>
+                    <ul class="task-list-2"></ul>
+                    <ul class="task-list-3"></ul>
+                    <ul class="task-list-4"></ul>
+                    <ul class="task-list-5"></ul>
+                    <ul class="task-list-6"></ul>
+                </div>
+                <i class="material-icons add-circle">
+                    add_circle
+                </i>
+            </div>
+        </div>
+    </body>
+</html>
