@@ -32,8 +32,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 deleteIcon.style.display = 'none';
             }
         })
+
+        var deleteIcon = document.createElement('i');
+        deleteIcon.classList.add('material-icons');
+        deleteIcon.classList.add('md-36');
+        var deleteIconTN = document.createTextNode('cancel');
+        deleteIcon.style.display = 'none';
+        deleteIcon.appendChild(deleteIconTN);
+        deleteIcon.addEventListener('click', function() {
+            this.parentElement.parentElement.remove();
+            if (current.children.length === 0) {
+                current.style.display = 'none';
+            } 
+        })
         
         eventsBox.appendChild(circleIcon);
+        eventsBox.appendChild(deleteIcon);
         li.appendChild(eventsBox);
 
         if (taskTime.value.length === 5 || taskDue.value.length > 4) {
@@ -77,83 +91,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var current = uls[0];
     var currentSelected = tiles[0];
-    tiles[0].addEventListener('click', function () {
-        current.style.display = 'none';
-        if (uls[0].children.length > 0) {
-            uls[0].style.display = 'block';
-        }
-        current = uls[0];
+    
+    for (var i = 0; i < 7; i++) {
+        (function (index) {
+            tiles[index].addEventListener('click', function() {
+                current.style.display = 'none';
+                if (uls[index].children.length > 0) {
+                    uls[index].style.display = 'block';
+                }
+                current = uls[index];
 
-        currentSelected.classList.toggle('selected');
-        tiles[0].classList.toggle('selected');
-        currentSelected = tiles[0]
-    })
-    tiles[1].addEventListener('click', function () {
-        current.style.display = 'none';
-        if (uls[1].children.length > 0) {
-            uls[1].style.display = 'block';
-        }
-        current = uls[1];
-
-        currentSelected.classList.toggle('selected');
-        tiles[1].classList.toggle('selected');
-        currentSelected = tiles[1]
-    })
-    tiles[2].addEventListener('click', function () {
-        current.style.display = 'none';
-        if (uls[2].children.length > 0) {
-            uls[2].style.display = 'block';
-        }
-        current = uls[2];
-
-        currentSelected.classList.toggle('selected');
-        tiles[2].classList.toggle('selected');
-        currentSelected = tiles[2]
-    })
-    tiles[3].addEventListener('click', function () {
-        current.style.display = 'none';
-        if (uls[3].children.length > 0) {
-            uls[3].style.display = 'block';
-        }
-        current = uls[3];
-
-        currentSelected.classList.toggle('selected');
-        tiles[3].classList.toggle('selected');
-        currentSelected = tiles[3]
-    })
-    tiles[4].addEventListener('click', function () {
-        current.style.display = 'none';
-        if (uls[4].children.length > 0) {
-            uls[4].style.display = 'block';
-        }
-        current = uls[4];
-
-        currentSelected.classList.toggle('selected');
-        tiles[4].classList.toggle('selected');
-        currentSelected = tiles[4]
-    })
-    tiles[5].addEventListener('click', function () {
-        current.style.display = 'none';
-        if (uls[5].children.length > 0) {
-            uls[5].style.display = 'block';
-        }
-        current = uls[5];
-
-        currentSelected.classList.toggle('selected');
-        tiles[5].classList.toggle('selected');
-        currentSelected = tiles[5]
-    })
-    tiles[6].addEventListener('click', function () {
-        current.style.display = 'none';
-        if (uls[6].children.length > 0) {
-            uls[6].style.display = 'block';
-        }
-        current = uls[6];
-
-        currentSelected.classList.toggle('selected');
-        tiles[6].classList.toggle('selected');
-        currentSelected = tiles[6]
-    })
+                currentSelected.classList.toggle('selected');
+                tiles[index].classList.toggle('selected');
+                currentSelected = tiles[index]
+            });
+        })(i)
+    }
 
     function Calendar() {
         var now = new Date();
