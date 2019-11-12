@@ -11,12 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
         var taskNameTN = document.createTextNode(taskName.value);
         li.appendChild(taskNameTN);
 
-        var eventsBox = document.createElement('p');
-        eventsBox.classList.add('events');
-
         var circleIcon = document.createElement('i');
         circleIcon.classList.add('material-icons');
         circleIcon.classList.add('md-36');
+        circleIcon.classList.add('done');
         var circleIconTN = document.createTextNode('radio_button_unchecked');
         circleIcon.appendChild(circleIconTN);
         circleIcon.addEventListener('click', function () {
@@ -25,30 +23,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 var swap = document.createTextNode('check_circle_outline');
                 this.appendChild(swap);
                 deleteIcon.style.display = 'block';
+                this.parentElement.style.backgroundColor = '#f3e5f5';
             } else {
                 this.firstChild.remove();
                 var swap = document.createTextNode('radio_button_unchecked');
                 this.appendChild(swap);
                 deleteIcon.style.display = 'none';
+                this.parentElement.style.backgroundColor = 'white';
             }
         })
 
         var deleteIcon = document.createElement('i');
         deleteIcon.classList.add('material-icons');
         deleteIcon.classList.add('md-36');
+        deleteIcon.classList.add('remove');
         var deleteIconTN = document.createTextNode('cancel');
         deleteIcon.style.display = 'none';
         deleteIcon.appendChild(deleteIconTN);
         deleteIcon.addEventListener('click', function() {
-            this.parentElement.parentElement.remove();
+            this.parentElement.remove();
             if (current.children.length === 0) {
                 current.style.display = 'none';
             } 
         })
         
-        eventsBox.appendChild(circleIcon);
-        eventsBox.appendChild(deleteIcon);
-        li.appendChild(eventsBox);
+        li.appendChild(circleIcon);
+        li.appendChild(deleteIcon);
 
         if (taskTime.value.length === 5 || taskDue.value.length > 4) {
             var description = document.createElement('p');

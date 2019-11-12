@@ -183,6 +183,7 @@ ul {
     margin: 20px 30px 20px 30px;
 }
 li {
+    position: relative;
     color: #6a1b9a;
     display: block;
     min-height: 60px;
@@ -224,13 +225,19 @@ li:last-child {
     color: #9c4dcc;
     background-color: #f3e5f5;
 }
-.events {
-    width: 38px;
-    min-height: 38px;
-    margin-left: -45px;
-    font-size: 36px;
+.done {
+    margin-left: -43px;
     color: #9c4dcc;
     float: left;
+}
+.remove {
+    position: absolute;
+    right: 0%;
+    top: 0%;
+    margin-right: -40px;
+    margin-top: 10px;
+    float: left;
+    color: #9c4dcc;
 }
 .today-icon, .add-circle, header, #today-header, #week-header {
     color: #6a1b9a;
@@ -253,17 +260,8 @@ li:last-child {
 .tile:hover .date-name {
     color: #9c4dcc;
 }
-.add-circle:hover, .cancel:hover, .events i:hover {
+.add-circle:hover, .cancel:hover, .done, .remove  {
     transition: 0.3s ease-in-out;
     transform: scale(1.1);
     cursor: pointer;
 }
-
-/*
-.circle {
-    padding: 1px 5px;
-    margin-left: -47px;
-    font-size: 36px;
-    color: #9c4dcc;
-}
-*/
