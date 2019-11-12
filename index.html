@@ -17,28 +17,45 @@
                 <h1>Task Manager</h1>
             </div>
             <div id="form-wrapper">
-                <i class="material-icons cancel md-36">
-                    highlight_off
-                </i>
                 <div>
-                    <i class="material-icons md-36 arrow-right">
+                    <i class="material-icons md-36 input-icon">
                         play_arrow
                     </i>
                     <input id="task-name" type="text" placeholder="Task name">
                 </div>
                 <div>
-                    <i class="material-icons md-36 arrow-right">
+                    <i class="material-icons md-36 input-icon">
+                        priority_high
+                    </i>
+                    <select>
+                        <option selected>Select priority</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div>
+                    <i class="material-icons md-36 input-icon">
                         schedule
                     </i>
                     <input id="task-time" type="time">
                 </div>
                 <div>
-                    <i class="material-icons md-36 arrow-right">
+                    <i class="material-icons md-36 input-icon">
                         outlined_flag
                     </i>
                     <input id="task-due" type="text" placeholder="Due">
                 </div>
+                <div>
+                    <i class="material-icons md-36 input-icon">
+                        description
+                    </i>
+                    <input id="task-description" type="text" placeholder="Description">
+                </div>
             </div>
+            <button id="add">Add</i>
         </div>
         <div id="container">
             <header>
@@ -94,9 +111,6 @@
                 <ul class="task-list-5"></ul>
                 <ul class="task-list-6"></ul>
             </div>
-            <i class="material-icons add-circle">
-                add_circle
-            </i>
         </div>
     </div>
 </body>

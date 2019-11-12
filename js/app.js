@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var taskName = document.querySelector('#task-name');
     var taskTime = document.querySelector('#task-time');
     var taskDue = document.querySelector('#task-due');
-    var form = document.querySelector('#form-wrapper');
+    var taskDesc = document.querySelector('#task-description');
+    var taskPrio = document.querySelector('select');
 
     function CreateNewTask() {
         var li = document.createElement('li');
@@ -50,9 +51,20 @@ document.addEventListener('DOMContentLoaded', function () {
         li.appendChild(circleIcon);
         li.appendChild(deleteIcon);
 
-        if (taskTime.value.length === 5 || taskDue.value.length > 4) {
+        if (taskTime.value.length === 5 || taskDue.value.length > 4 || taskPrio.selectedIndex > 0 || taskDesc.value.length > 3) {
             var description = document.createElement('p');
             description.classList.add('details')
+            if (taskPrio.selectedIndex > 0) {
+                var spanPrio = document.createElement('span');
+                var prioIcon = document.createElement('i');
+                prioIcon.classList.add('material-icons');
+                var prioIconTN = document.createTextNode('priority_high');
+                prioIcon.appendChild(prioIconTN);
+                var taskPrioTN = document.createTextNode('Priority: ' + taskPrio.selectedOptions[0].innerHTML);
+                spanPrio.appendChild(prioIcon);
+                spanPrio.appendChild(taskPrioTN);
+                description.appendChild(spanPrio);
+            }
             if (taskTime.value.length === 5) {
                 var spanTime = document.createElement('span');
                 var timeIcon = document.createElement('i');
@@ -75,6 +87,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 spanDue.appendChild(taskDueTN);
                 description.appendChild(spanDue);
             }
+            if (taskDesc.value.length > 3) {
+                var spanDesc = document.createElement('span');
+                var descIcon = document.createElement('i');
+                descIcon.classList.add('material-icons');
+                var descIconTN = document.createTextNode('description');
+                descIcon.appendChild(descIconTN);
+                var taskDescTN = document.createTextNode(taskDesc.value);
+                spanDesc.appendChild(descIcon);
+                spanDesc.appendChild(taskDescTN);
+                description.appendChild(spanDesc);
+            }
             li.appendChild(description);
         }
         current.appendChild(li);
@@ -82,6 +105,8 @@ document.addEventListener('DOMContentLoaded', function () {
         taskName.value = '';
         taskTime.value = '';
         taskDue.value = '';
+        taskPrio.selectedIndex = 0;
+        taskDesc.value = '';
     }
 
     var tiles = document.querySelectorAll('.tile');
@@ -125,13 +150,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     Calendar();
 
-    document.querySelector('.add-circle').addEventListener('click', function () {
-        form.style.display = 'block';
-        if (taskName.value.length > 5 && taskName.value.length < 50 && form.style.display === 'block') {
+    document.querySelector('#add').addEventListener('click', function () {
+        if (taskName.value.length > 5 && taskName.value.length < 50) {
             CreateNewTask();
         }
-    })
-    document.querySelector('.cancel').addEventListener('click', function () {
-        form.style.display = 'none';
     })
 })

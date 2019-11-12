@@ -10,6 +10,9 @@
     font-weight: 400;
     src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
 }
+body {
+    background-color: #6a1b9a;
+}
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -77,10 +80,9 @@ h1 {
 }
 #form-wrapper {
     position: absolute;
-    top: 60%;
+    top: 30%;
     width: 380px;
     height: 300px;
-    display: none;
 }
 #form-wrapper>div {
     position: relative;
@@ -88,17 +90,21 @@ h1 {
     margin-left: 25px;
     margin-bottom: 10px;;
 }
-.arrow-right, .cancel {
+.input-icon {
     margin-right: 5px;
     color: white;
 }
-input {
+input, select {
     height: 36px;
     width: 270px;
     font-size: 24px;
-    padding: 6px;
+    padding: 5px;
     border-radius: 15px;
     border: none;
+    color: #666666;
+}
+select {
+    width: 180px;
 }
 input[type="time"] {
     width: 115px;
@@ -106,16 +112,13 @@ input[type="time"] {
 input, select {
     outline: none;
 }
-.cancel {
-    position: absolute;
-    right: 0%;
-    top: 0%;
-}
 #container {
     position: absolute;
     height: 100%;
     width: 75%;
     left: 25%;
+    background-color: white;
+    border-radius: 0px 8px 8px 0px;
 }
 header {
     color: #666666;
@@ -209,12 +212,18 @@ li:last-child {
 .details i {
     padding-right: 5px;
 }
-.add-circle {
-    font-size: 70px;
+#add {
     position: absolute;
-    left: 30px;
-    top: 90%;
-    border-radius: 70px;
+    left: calc(50% - 75px);
+    top: 70%;
+    height: 40px;
+    width: 150px;
+    border-radius: 15px;
+    font-size: 24px;
+    border: none;
+    background-color: white;
+    color: #6a1b9a;
+    font-weight: bold;
 }
 .shadow {
     -webkit-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.75);
@@ -226,7 +235,11 @@ li:last-child {
     background-color: #f3e5f5;
 }
 .done {
-    margin-left: -43px;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    margin-left: -40px;
+    margin-top: 10px;
     color: #9c4dcc;
     float: left;
 }
@@ -243,7 +256,7 @@ li:last-child {
     color: #6a1b9a;
     border-color: #666666;
 }
-.tile:hover {
+.tile:hover, #add:hover {
     cursor: pointer;
     background-color: #ce93d8;
     border: 1px solid #666666;
