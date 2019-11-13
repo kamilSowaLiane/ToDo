@@ -252,11 +252,28 @@ li:last-child {
     float: left;
     color: #9c4dcc;
 }
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 85%;
+    width: 100%;
+}
+.feature {
+    height: 40px;
+    width: 160px;
+    font-size: 18px;
+    color: #6a1b9a;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+}
 .today-icon, .add-circle, header, #today-header, #week-header {
     color: #6a1b9a;
     border-color: #666666;
 }
-.tile:hover, #add:hover {
+.tile:hover, #add:hover, .feature:hover {
     cursor: pointer;
     background-color: #ce93d8;
     border: 1px solid #666666;

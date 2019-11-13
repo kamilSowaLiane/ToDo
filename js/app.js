@@ -41,13 +41,13 @@ document.addEventListener('DOMContentLoaded', function () {
         var deleteIconTN = document.createTextNode('cancel');
         deleteIcon.style.display = 'none';
         deleteIcon.appendChild(deleteIconTN);
-        deleteIcon.addEventListener('click', function() {
+        deleteIcon.addEventListener('click', function () {
             this.parentElement.remove();
             if (current.children.length === 0) {
                 current.style.display = 'none';
-            } 
+            }
         })
-        
+
         li.appendChild(circleIcon);
         li.appendChild(deleteIcon);
 
@@ -60,9 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 prioIcon.classList.add('material-icons');
                 var prioIconTN = document.createTextNode('priority_high');
                 prioIcon.appendChild(prioIconTN);
-                var taskPrioTN = document.createTextNode('Priority: ' + taskPrio.selectedOptions[0].innerHTML);
+                var taskPrioTN = document.createTextNode('Priority: ')
+                var taskPrioTNvalue = document.createTextNode(taskPrio.selectedOptions[0].innerHTML);
                 spanPrio.appendChild(prioIcon);
                 spanPrio.appendChild(taskPrioTN);
+                spanPrio.appendChild(taskPrioTNvalue);
                 description.appendChild(spanPrio);
             }
             if (taskTime.value.length === 5) {
@@ -116,10 +118,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     var current = uls[0];
     var currentSelected = tiles[0];
-    
+
     for (var i = 0; i < 7; i++) {
         (function (index) {
-            tiles[index].addEventListener('click', function() {
+            tiles[index].addEventListener('click', function () {
                 current.style.display = 'none';
                 if (uls[index].children.length > 0) {
                     uls[index].style.display = 'block';
@@ -151,8 +153,53 @@ document.addEventListener('DOMContentLoaded', function () {
     Calendar();
 
     document.querySelector('#add').addEventListener('click', function () {
-        if (taskName.value.length > 5 && taskName.value.length < 50) {
+        if (taskName.value.length > 3 && taskName.value.length < 100) {
             CreateNewTask();
+        }
+    })
+    document.querySelector('.removeDone').addEventListener('click', function () {
+        Array.from(current.children).forEach(element => {
+            if (element.style.backgroundColor == 'rgb(243, 229, 245)') {
+                element.remove();
+            }
+        });
+        if (current.children.length === 0) {
+            current.style.display = 'none';
+        }
+    })
+    document.querySelector('.sort').addEventListener('click', function () {
+        var list, i, switching, b, shouldSwitch;
+        list = current;
+        switching = true;
+        /* Make a loop that will continue until
+        no switching has been done: */
+        while (switching) {
+            // start by saying: no switching is done:
+            switching = false;
+            b = list.getElementsByTagName('li');
+            // Loop through all list-items:
+            for (i = 0; i < b.length; i++) {
+                // start by saying there should be no switching:
+                shouldSwitch = false;
+                /* check if the next item should
+                switch place with the current item: */
+                if (b[i].children[2].firstElementChild.lastChild.textContent.length > 1) {
+                    current.appendChild(b[i]);
+                } 
+                if (parseInt(b[i].children[2].firstElementChild.lastChild.textContent, 10) > parseInt(b[i + 1].children[2].firstElementChild.lastChild.textContent, 10)) {
+                    /* if next item is numerically
+                    lower than current item, mark as a switch
+                    and break the loop: */
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                /* If a switch has been marked, make the switch
+                and mark the switch as done: */
+                b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                switching = true;
+            }
         }
     })
 })
