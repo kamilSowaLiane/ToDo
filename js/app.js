@@ -168,35 +168,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
     document.querySelector('.sort').addEventListener('click', function () {
-        var list, i, switching, b, shouldSwitch;
-        list = current;
+        var list, i, b, switching, shouldSwitch, counter;
         switching = true;
-        /* Make a loop that will continue until
-        no switching has been done: */
+        list = Array.from(current.children);
+        counter = 0;
+        
         while (switching) {
-            // start by saying: no switching is done:
             switching = false;
-            b = list.getElementsByTagName('li');
-            // Loop through all list-items:
-            for (i = 0; i < b.length; i++) {
-                // start by saying there should be no switching:
-                shouldSwitch = false;
-                /* check if the next item should
-                switch place with the current item: */
-                if (b[i].children[2].firstElementChild.lastChild.textContent.length > 1) {
-                    current.appendChild(b[i]);
-                } 
+            for (i = 0; i < list.length - counter; i++) {
+                shouldSwitch = false; 
+                if (list[i].children[2].firstElementChild.lastChild.textContent.length > 1) {
+                    counter ++;
+                    current.appendChild(list[i]);
+                }
+                b = Array.from(current.children);
                 if (parseInt(b[i].children[2].firstElementChild.lastChild.textContent, 10) > parseInt(b[i + 1].children[2].firstElementChild.lastChild.textContent, 10)) {
-                    /* if next item is numerically
-                    lower than current item, mark as a switch
-                    and break the loop: */
                     shouldSwitch = true;
                     break;
                 }
             }
             if (shouldSwitch) {
-                /* If a switch has been marked, make the switch
-                and mark the switch as done: */
                 b[i].parentNode.insertBefore(b[i + 1], b[i]);
                 switching = true;
             }
