@@ -168,29 +168,34 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     })
     document.querySelector('.sort').addEventListener('click', function () {
-        var list, i, b, switching, shouldSwitch, counter;
+        var list, i, switching, shouldSwitch;
         switching = true;
-        list = Array.from(current.children);
-        counter = 0;
-        
+        var counter = sortNonPrio();
         while (switching) {
             switching = false;
+            list = Array.from(current.children);
             for (i = 0; i < list.length - counter; i++) {
-                shouldSwitch = false; 
-                if (list[i].children[2].firstElementChild.lastChild.textContent.length > 1) {
-                    counter ++;
-                    current.appendChild(list[i]);
-                }
-                b = Array.from(current.children);
-                if (parseInt(b[i].children[2].firstElementChild.lastChild.textContent, 10) > parseInt(b[i + 1].children[2].firstElementChild.lastChild.textContent, 10)) {
+                shouldSwitch = false;
+                if (parseInt(list[i].children[2].firstElementChild.lastChild.textContent, 10) > parseInt(list[i + 1].children[2].firstElementChild.lastChild.textContent, 10)) {
                     shouldSwitch = true;
                     break;
                 }
             }
             if (shouldSwitch) {
-                b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                list[i].parentNode.insertBefore(list[i + 1], list[i]);
                 switching = true;
             }
         }
     })
+    function sortNonPrio() {
+        var counter = 0;
+        list = Array.from(current.children);
+        for (i = 0; i < list.length; i++) {
+            if (list[i].children[2].firstElementChild.lastChild.textContent.length > 1) {
+                current.appendChild(list[i]);
+                counter ++
+            }
+        }
+        return counter;
+    }
 })
