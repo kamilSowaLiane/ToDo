@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var circleIcon = document.createElement('i');
         circleIcon.classList.add('material-icons');
-        circleIcon.classList.add('md-36');
+        circleIcon.classList.add('md-24');
         circleIcon.classList.add('done');
         var circleIconTN = document.createTextNode('radio_button_unchecked');
         circleIcon.appendChild(circleIconTN);
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var deleteIcon = document.createElement('i');
         deleteIcon.classList.add('material-icons');
-        deleteIcon.classList.add('md-36');
+        deleteIcon.classList.add('md-24');
         deleteIcon.classList.add('remove');
         var deleteIconTN = document.createTextNode('cancel');
         deleteIcon.style.display = 'none';
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
             list = Array.from(current.children);
             for (i = 0; i < list.length - counter; i++) {
                 shouldSwitch = false;
-                if (parseInt(list[i].children[2].firstElementChild.lastChild.textContent, 10) > parseInt(list[i + 1].children[2].firstElementChild.lastChild.textContent, 10)) {
+                if (list[i].children[2].firstElementChild.lastChild.textContent > list[i + 1].children[2].firstElementChild.lastChild.textContent) {
                     shouldSwitch = true;
                     break;
                 }
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var counter = 0;
         list = Array.from(current.children);
         for (i = 0; i < list.length; i++) {
-            if (list[i].children[2].firstElementChild.lastChild.textContent.length > 1) {
+            if (list[i].children.length === 2 || list[i].children[2].firstElementChild.lastChild.textContent.length > 1) {
                 current.appendChild(list[i]);
                 counter ++
             }
